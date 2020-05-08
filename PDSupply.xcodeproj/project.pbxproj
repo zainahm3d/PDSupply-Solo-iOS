@@ -3,10 +3,12 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1F6E3524554E3500B3B145 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F6E3424554E3500B3B145 /* BluetoothController.swift */; };
+		BF49C02F245612D600A8FE7F /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = BF49C02E245612D600A8FE7F /* SwiftUICharts */; };
 		BF8EF8762454F0B300A75F50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF8752454F0B300A75F50 /* AppDelegate.swift */; };
 		BF8EF8782454F0B300A75F50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF8772454F0B300A75F50 /* SceneDelegate.swift */; };
 		BF8EF87A2454F0B300A75F50 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF8792454F0B300A75F50 /* ContentView.swift */; };
@@ -15,6 +17,7 @@
 		BF8EF8822454F0B400A75F50 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BF8EF8802454F0B400A75F50 /* LaunchScreen.storyboard */; };
 		BF8EF88D2454F0B400A75F50 /* PDSupplyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF88C2454F0B400A75F50 /* PDSupplyTests.swift */; };
 		BF8EF8982454F0B400A75F50 /* PDSupplyUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF8972454F0B400A75F50 /* PDSupplyUITests.swift */; };
+		BFAC82222458BF9C001B8484 /* DispatchQueue+DebounceThrottle.swift in Sources */ = {isa = PBXBuildFile; fileRef = BFAC82212458BF9C001B8484 /* DispatchQueue+DebounceThrottle.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF1F6E3424554E3500B3B145 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
 		BF8EF8722454F0B300A75F50 /* PDSupply.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDSupply.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8EF8752454F0B300A75F50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BF8EF8772454F0B300A75F50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -49,6 +53,7 @@
 		BF8EF8932454F0B400A75F50 /* PDSupplyUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PDSupplyUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8EF8972454F0B400A75F50 /* PDSupplyUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PDSupplyUITests.swift; sourceTree = "<group>"; };
 		BF8EF8992454F0B400A75F50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BFAC82212458BF9C001B8484 /* DispatchQueue+DebounceThrottle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DispatchQueue+DebounceThrottle.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +61,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF49C02F245612D600A8FE7F /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,10 +108,12 @@
 				BF8EF8752454F0B300A75F50 /* AppDelegate.swift */,
 				BF8EF8772454F0B300A75F50 /* SceneDelegate.swift */,
 				BF8EF8792454F0B300A75F50 /* ContentView.swift */,
+				BF1F6E3424554E3500B3B145 /* BluetoothController.swift */,
 				BF8EF87B2454F0B400A75F50 /* Assets.xcassets */,
 				BF8EF8802454F0B400A75F50 /* LaunchScreen.storyboard */,
 				BF8EF8832454F0B400A75F50 /* Info.plist */,
 				BF8EF87D2454F0B400A75F50 /* Preview Content */,
+				BFAC82212458BF9C001B8484 /* DispatchQueue+DebounceThrottle.swift */,
 			);
 			path = PDSupply;
 			sourceTree = "<group>";
@@ -152,6 +160,9 @@
 			dependencies = (
 			);
 			name = PDSupply;
+			packageProductDependencies = (
+				BF49C02E245612D600A8FE7F /* SwiftUICharts */,
+			);
 			productName = PDSupply;
 			productReference = BF8EF8722454F0B300A75F50 /* PDSupply.app */;
 			productType = "com.apple.product-type.application";
@@ -224,6 +235,9 @@
 				Base,
 			);
 			mainGroup = BF8EF8692454F0B300A75F50;
+			packageReferences = (
+				BF49C02D245612D600A8FE7F /* XCRemoteSwiftPackageReference "ChartView" */,
+			);
 			productRefGroup = BF8EF8732454F0B300A75F50 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -269,6 +283,8 @@
 			files = (
 				BF8EF8762454F0B300A75F50 /* AppDelegate.swift in Sources */,
 				BF8EF8782454F0B300A75F50 /* SceneDelegate.swift in Sources */,
+				BF1F6E3524554E3500B3B145 /* BluetoothController.swift in Sources */,
+				BFAC82222458BF9C001B8484 /* DispatchQueue+DebounceThrottle.swift in Sources */,
 				BF8EF87A2454F0B300A75F50 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -436,8 +452,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PDSupply/Preview Content\"";
+				DEVELOPMENT_TEAM = 5XUQ432PM3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PDSupply/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,8 +473,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"PDSupply/Preview Content\"";
+				DEVELOPMENT_TEAM = 5XUQ432PM3;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = PDSupply/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -588,6 +608,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		BF49C02D245612D600A8FE7F /* XCRemoteSwiftPackageReference "ChartView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppPear/ChartView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		BF49C02E245612D600A8FE7F /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BF49C02D245612D600A8FE7F /* XCRemoteSwiftPackageReference "ChartView" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = BF8EF86A2454F0B300A75F50 /* Project object */;
 }
