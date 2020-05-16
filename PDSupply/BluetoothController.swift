@@ -19,7 +19,7 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
     public let PD_STATUS_OUTPUT_OVERCURRENT: UInt32 = 0x0C
     public let PD_STATUS_OUTPUT_HIGH: UInt32 = 0x0D
     public let PD_STATUS_OUTPUT_LOW: UInt32 = 0x0E
-
+    
     // Possible values for MasterData_struct_struct.commandedStatus in firmware
     public let PD_COMMAND_OUTPUT_ON: UInt32 = 0x1A
     public let PD_COMMAND_OUTPUT_OFF: UInt32 = 0x1B
@@ -186,11 +186,11 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
                 currentDataShort = currentData
                 voltageDataShort = voltageData
             }
-
+            
             currentDataShort[0] = 0
             voltageDataShort[0] = 0
             
-//            print("Status: " + String(status) + "\t\t" + "Counter: " + String(counter) + "\t\t" + "Measured mA: " + String(current) + "\t\t" + "Measured Voltage: " + String(voltage))
+            //            print("Status: " + String(status) + "\t\t" + "Counter: " + String(counter) + "\t\t" + "Measured mA: " + String(current) + "\t\t" + "Measured Voltage: " + String(voltage))
         }
     }
     

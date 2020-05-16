@@ -68,7 +68,7 @@ struct ContentView: View {
                 Spacer()
                 
                 outputButton
-
+                
             }
             
             chartView
@@ -117,8 +117,8 @@ struct ContentView: View {
         VStack {
             if self.powerSupply.statusData == self.powerSupply.PD_STATUS_OUTPUT_GOOD {
                 Text("Output Enabled")
-                .onTapGesture {
-                    self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
+                    .onTapGesture {
+                        self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
                 }
                 .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 1000) {
                     self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_ON, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
@@ -129,8 +129,8 @@ struct ContentView: View {
                 .font(.title)
             } else if self.powerSupply.statusData == self.powerSupply.PD_STATUS_OUTPUT_OFF {
                 Text("Output Off")
-                .onTapGesture {
-                    self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
+                    .onTapGesture {
+                        self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
                 }
                 .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 1000) {
                     self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_ON, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
@@ -141,8 +141,8 @@ struct ContentView: View {
                 .font(.title)
             } else {
                 Text("Over Current")
-                .onTapGesture {
-                    self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
+                    .onTapGesture {
+                        self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
                 }
                 .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 1000) {
                     self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_ON, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
