@@ -190,7 +190,7 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
             currentDataShort[0] = 0
             voltageDataShort[0] = 0
             
-            //            print("Status: " + String(status) + "\t\t" + "Counter: " + String(counter) + "\t\t" + "Measured mA: " + String(current) + "\t\t" + "Measured Voltage: " + String(voltage))
+//                        print("Status: " + String(status) + "\t\t" + "Counter: " + String(counter) + "\t\t" + "Measured mA: " + String(current) + "\t\t" + "Measured Voltage: " + String(voltage))
         }
     }
     

@@ -117,41 +117,29 @@ struct ContentView: View {
         VStack {
             if self.powerSupply.statusData == self.powerSupply.PD_STATUS_OUTPUT_GOOD {
                 Text("Output Enabled")
-                    .onTapGesture {
-                        self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
-                }
-                .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 1000) {
-                    self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_ON, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
-                }
-                .padding()
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding([.bottom, .top], 40)
                 .background(Color.green)
-                .foregroundColor(.white)
-                .font(.title)
             } else if self.powerSupply.statusData == self.powerSupply.PD_STATUS_OUTPUT_OFF {
                 Text("Output Off")
-                    .onTapGesture {
-                        self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
-                }
-                .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 1000) {
-                    self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_ON, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
-                }
-                .padding()
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding([.bottom, .top], 40)
                 .background(Color.yellow)
-                .foregroundColor(.white)
-                .font(.title)
             } else {
                 Text("Over Current")
-                    .onTapGesture {
-                        self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
-                }
-                .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 1000) {
-                    self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_ON, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
-                }
-                .padding()
+                .frame(minWidth: 0, maxWidth: .infinity)
+                .padding([.bottom, .top], 40)
                 .background(Color.red)
-                .foregroundColor(.white)
-                .font(.title)
             }
+        }
+        .foregroundColor(.white)
+        .font(.title)
+        .offset(y: UIDevice.current.userInterfaceIdiom == .pad ? 20 : 35)
+        .onTapGesture {
+                self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
+        }
+        .onLongPressGesture(minimumDuration: 0.5, maximumDistance: 1000) {
+            self.powerSupply.commandSupply(commandedStatus: self.powerSupply.PD_COMMAND_OUTPUT_ON, commandedOutput: 0, commandedVoltage: self.voltageSlider, commandedCurrent: self.currentSlider)
         }
     }
     
