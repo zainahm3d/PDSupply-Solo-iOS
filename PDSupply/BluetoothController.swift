@@ -37,6 +37,10 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
     @Published var voltageDataShort: [Double] = Array(repeating: 0, count: 100)
     @Published var currentDataShort: [Double] = Array(repeating: 0, count: 100)
     
+    // Latest Values
+    @Published var latestVoltage: Double = 0;
+    @Published var latestCurrent: Double = 0;
+    
     let serviceUUID = CBUUID(string: "F3641400-00B0-4240-BA50-05CA45BF8ABC")
     let characteristicUUID = CBUUID(string: "F3641401-00B0-4240-BA50-05CA45BF8ABC")
     var dataCharacteristic: CBCharacteristic! = nil
@@ -177,6 +181,9 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
             voltageData.append(Double(voltage)) // Values come in as a float but the chart library requires a Double
             currentData.append(Double(current))
             
+            latestVoltage = Double(voltage)
+            latestCurrent = Double(current)
+            
             if currentData.count > 100 {
                 for i in 0...99 {
                     currentDataShort[i] = Double(currentData[currentData.count - (100 - i)])
@@ -190,7 +197,7 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
             currentDataShort[0] = 0
             voltageDataShort[0] = 0
             
-//                        print("Status: " + String(status) + "\t\t" + "Counter: " + String(counter) + "\t\t" + "Measured mA: " + String(current) + "\t\t" + "Measured Voltage: " + String(voltage))
+            //                        print("Status: " + String(status) + "\t\t" + "Counter: " + String(counter) + "\t\t" + "Measured mA: " + String(current) + "\t\t" + "Measured Voltage: " + String(voltage))
         }
     }
     
