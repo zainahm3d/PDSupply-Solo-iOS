@@ -88,11 +88,11 @@ struct ContentView: View {
     
     var voltageView: some View {
         VStack {
-            Text("Voltage: \(powerSupply.latestVoltage, specifier: "%.2f")V")
+            Text("Voltage: \(powerSupply.latestVoltage, specifier: "%.3f")V")
             Slider(value: voltageBinding, in: 0...12.0, step: 0.1).padding([.horizontal], 40)
             
             HStack {
-                Text("Live: \(voltageSlider, specifier: "%.3f")V")
+                Text("Set: \(voltageSlider, specifier: "%.2f")V")
                 Stepper("", value: voltageBinding, in: 0...12.0, step: 0.1)
             }.padding([.horizontal], 40)
             
@@ -101,11 +101,11 @@ struct ContentView: View {
     
     var currentView: some View {
         VStack {
-            Text("Current Limit: \(powerSupply.latestCurrent, specifier: "%.2f")mA")
+            Text("Current: \(powerSupply.latestCurrent, specifier: "%.3f")mA")
             Slider(value: currentBinding, in: 0...1000.0, step: 10.0).padding([.horizontal], 40)
             
             HStack {
-                Text("Live: \(currentSlider, specifier: "%.3f")mA")
+                Text("Limit: \(currentSlider, specifier: "%.2f")mA")
                 Stepper("", value: currentBinding, in: 0...1000.0, step: 10.0)
             }.padding([.horizontal], 40)
             
