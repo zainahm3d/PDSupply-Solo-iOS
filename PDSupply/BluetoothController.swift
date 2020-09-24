@@ -41,6 +41,7 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
     @Published var latestVoltage: Double = 0;
     @Published var latestCurrent: Double = 0;
     
+    let pdsupplyName = "PDSupply Solo"
     let serviceUUID = CBUUID(string: "F3641400-00B0-4240-BA50-05CA45BF8ABC")
     let characteristicUUID = CBUUID(string: "F3641401-00B0-4240-BA50-05CA45BF8ABC")
     var dataCharacteristic: CBCharacteristic! = nil
@@ -67,9 +68,9 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
         var outputData: Array<UInt8> = Array(repeating: 0, count: 16)
         
         memcpy(&outputData, &_commandedStatus, 4)
-        memcpy(&outputData + 4, &_commandedOutput, 4)
-        memcpy(&outputData + 8, &_commandedVoltage, 4)
-        memcpy(&outputData + 12, &_commandedCurrent, 4)
+        memcpy(&outputData[4], &_commandedOutput, 4)
+        memcpy(&outputData[8], &_commandedVoltage, 4)
+        memcpy(&outputData[12], &_commandedCurrent, 4)
         
         if (connected) {
             self.peripheral.writeValue(Data(outputData), for: dataCharacteristic, type: .withResponse)
@@ -92,7 +93,7 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
     }
     
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        if peripheral.name == "PDSupply Solo" {
+        if peripheral.name == pdsupplyName {
             self.peripheral = peripheral
             central.connect(peripheral, options: nil)
             central.stopScan()
@@ -172,9 +173,9 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
             
             // TODO: Fix temp pointer warning
             memcpy(&counter, &test, MemoryLayout.size(ofValue: counter))
-            memcpy(&status, &test + 4, MemoryLayout.size(ofValue: status))
-            memcpy(&voltage, &test + 8, MemoryLayout.size(ofValue: voltage))
-            memcpy(&current, &test + 12, MemoryLayout.size(ofValue: current))
+            memcpy(&status, &test[4], MemoryLayout.size(ofValue: status))
+            memcpy(&voltage, &test[8], MemoryLayout.size(ofValue: voltage))
+            memcpy(&current, &test[12], MemoryLayout.size(ofValue: current))
             
             counterData.append(counter)
             statusData = status
