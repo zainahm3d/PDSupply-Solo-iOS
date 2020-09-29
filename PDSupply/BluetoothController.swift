@@ -13,6 +13,9 @@ import Combine
 
 public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, ObservableObject {
     
+    // Shared singleton
+    static let shared = BluetoothController();
+    
     // Possible values for SupplyData_struct.status in firmware
     public let PD_STATUS_OUTPUT_GOOD: UInt32 = 0x0A
     public let PD_STATUS_OUTPUT_OFF: UInt32 = 0x0B

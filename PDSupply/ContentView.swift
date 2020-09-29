@@ -12,7 +12,8 @@ import SwiftUICharts
 
 struct ContentView: View {
     
-    @ObservedObject var powerSupply = BluetoothController()
+    // SwiftUI can't directly observe the shared instance so we do the following:
+    @ObservedObject var powerSupply = BluetoothController.shared
     
     // Sliders
     @State var voltageSlider: Float = 0
