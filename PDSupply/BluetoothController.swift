@@ -14,7 +14,7 @@ import Combine
 public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripheralDelegate, ObservableObject {
     
     // Shared singleton
-    static let shared = BluetoothController();
+    static let shared = BluetoothController()
     
     // Possible values for SupplyData_struct.status in firmware
     public let PD_STATUS_OUTPUT_GOOD: UInt32 = 0x0A
@@ -53,7 +53,11 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
     var mainService: CBService! = nil
     var peripheral: CBPeripheral!
     
+    var shouldReconnect = false
+    
     @Published var connected = false
+    
+    static let haptics = hapticController()
     
     required override init() {
         super.init()
@@ -77,6 +81,13 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
         
         if (connected) {
             self.peripheral.writeValue(Data(outputData), for: dataCharacteristic, type: .withResponse)
+            
+            if (commandedStatus == PD_COMMAND_OUTPUT_ON) {
+                BluetoothController.haptics.poweronHaptic()
+            } else if (commandedStatus == PD_COMMAND_OUTPUT_OFF) {
+                BluetoothController.haptics.poweroffHaptic()
+            }
+            
         }
     }
     
@@ -135,13 +146,14 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
             if characteristic.uuid == characteristicUUID {
                 self.dataCharacteristic = characteristic
                 self.peripheral.setNotifyValue(true, for: characteristic)
+                self.peripheral.readValue(for: characteristic)
                 
                 connected = true
                 
                 // Disable Output
-                print("Voltage and Current Zeroed")
-                commandSupply(commandedStatus: PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: 0, commandedCurrent: 0)
-                print("Successfully Paired with PDSupply")
+//                print("Voltage and Current Zeroed")
+//                commandSupply(commandedStatus: PD_COMMAND_OUTPUT_OFF, commandedOutput: 0, commandedVoltage: 0, commandedCurrent: 0)
+//                print("Successfully Paired with PDSupply")
             }
         }
     }
@@ -151,11 +163,13 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
         
         connected = false;
         
-        if central.state == CBManagerState.poweredOn {
-            central.scanForPeripherals(withServices: nil, options: nil)
-            print("scanning")
-        } else {
-            print("bluetooth not available")
+        if (shouldReconnect) {
+            if central.state == CBManagerState.poweredOn {
+                central.scanForPeripherals(withServices: nil, options: nil)
+                print("scanning")
+            } else {
+                print("bluetooth not available")
+            }
         }
     }
     
@@ -206,6 +220,17 @@ public class BluetoothController: NSObject, CBCentralManagerDelegate, CBPeripher
     }
     
     public func disconnect() {
-        manager.cancelPeripheralConnection(peripheral)
+        if (connected)
+        {
+            manager.cancelPeripheralConnection(peripheral)
+        }
+
+        shouldReconnect = false
+        connected = false // test
+    }
+    
+    public func connect() {
+        shouldReconnect = true
+        manager.scanForPeripherals(withServices: nil, options: nil)
     }
 }

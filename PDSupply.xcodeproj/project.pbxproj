@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF0E0924254A3E3B0023BEBB /* hapticController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF0E0923254A3E3B0023BEBB /* hapticController.swift */; };
 		BF1F6E3524554E3500B3B145 /* BluetoothController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF1F6E3424554E3500B3B145 /* BluetoothController.swift */; };
 		BF49C02F245612D600A8FE7F /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = BF49C02E245612D600A8FE7F /* SwiftUICharts */; };
 		BF8EF8762454F0B300A75F50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BF8EF8752454F0B300A75F50 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF0E0923254A3E3B0023BEBB /* hapticController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = hapticController.swift; sourceTree = "<group>"; };
 		BF1F6E3424554E3500B3B145 /* BluetoothController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothController.swift; sourceTree = "<group>"; };
 		BF8EF8722454F0B300A75F50 /* PDSupply.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PDSupply.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF8EF8752454F0B300A75F50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 				BF8EF8772454F0B300A75F50 /* SceneDelegate.swift */,
 				BF8EF8792454F0B300A75F50 /* ContentView.swift */,
 				BF1F6E3424554E3500B3B145 /* BluetoothController.swift */,
+				BF0E0923254A3E3B0023BEBB /* hapticController.swift */,
 				BF8EF87B2454F0B400A75F50 /* Assets.xcassets */,
 				BF8EF8802454F0B400A75F50 /* LaunchScreen.storyboard */,
 				BF8EF8832454F0B400A75F50 /* Info.plist */,
@@ -283,6 +286,7 @@
 			files = (
 				BF8EF8762454F0B300A75F50 /* AppDelegate.swift in Sources */,
 				BF8EF8782454F0B300A75F50 /* SceneDelegate.swift in Sources */,
+				BF0E0924254A3E3B0023BEBB /* hapticController.swift in Sources */,
 				BF1F6E3524554E3500B3B145 /* BluetoothController.swift in Sources */,
 				BFAC82222458BF9C001B8484 /* DispatchQueue+DebounceThrottle.swift in Sources */,
 				BF8EF87A2454F0B300A75F50 /* ContentView.swift in Sources */,
